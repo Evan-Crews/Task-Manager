@@ -5,13 +5,16 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack serve",
+    "dev": "webpack serve & nodemon server/server.js",
     "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.1",
+    "mongoose": "^6.1.8",
+    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
