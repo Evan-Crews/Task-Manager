@@ -8,7 +8,7 @@ const TaskController = {
         console.log(err);
         next();
       } else {
-        console.log('returning tasks', taskFound);
+        // console.log('returning tasks', taskFound);
         res.status(200).json(taskFound);
       }
     })

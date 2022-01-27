@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const TaskController = require('./TaskController');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const PORT = 3000
@@ -13,6 +14,7 @@ mongoose.connection.once('open', () => {
 });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(cors());
 
 const taskRouter = express.Router();
 

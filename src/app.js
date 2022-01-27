@@ -1,21 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { TaskList } from './TaskList.js';
 import styles from './style.css'
 
+
 export const App = () => {
+  // create a new component to handle fetching tasks and rendering them
+  // decide between a fetch api or axios post request
+  // create a form that allows user to input data implement react hook forms if possible
+  // on submit of form, a function will be invoked, that will consume the service
   return(
-    <div className='outer div'>
+    <div className='outerDiv'>
       <h1>This is my solo project - Evan</h1>
-      <div className='input div'>
-        <input type='text' placeholder='please input a task'></input>
-      <button >Add to Tasks</button>
+      <div className='inputDiv'>
+        <form className='form' >
+          <input type='text' id='task' placeholder='please input a task'></input>
+          <input type='submit' value='submit'></input>
+
+        </form>
+        {/* <button onClick={() => console.log(value)}>Add to Tasks</button> */}
+        {/* need to build an onclick listener to invoke a fetch request to the local host tasks creat task end point */}
       </div>
-      <div className='Your List'>
-        <h2>This is your To-Do list:</h2>
-        <p>
-          example 1, example 2
-        </p>
-      </div>
+      <TaskList/>
     </div>
   )
 }
