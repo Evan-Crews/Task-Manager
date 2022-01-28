@@ -39,15 +39,15 @@ export const App = () => {
 
   return(
     <div className='outerDiv'>
-      <h1>This is my To-Do List</h1>
+      
       <div className='inputDiv'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type='text' id='task' placeholder='please input a task' 
+          <input className="text-input" type='text' id='task' placeholder='please input a task' 
           {...register("task", {
             required: true
           })}
         />
-        <input type='submit' value='submit'></input>
+        <input className="submit-button" type='submit' value='submit'></input>
 
         </form>
         {/* <button onClick={() => console.log(value)}>Add to Tasks</button> */}

@@ -13,11 +13,11 @@ export const TaskList = ({list}) => {
   //       .then((data) => setList(data))
   // },[])
   return (
-    <div className='Your List'>
+    <div className='Your-List'>
         <h2>This is your To-Do list:</h2>
-        <ul>
+        <ul className="task-list">
           {list && list.map((ele, index) => {
-            return <li key={index}>{ele.task}</li>
+            return <li className="task-item" key={index}>{ele.task}</li>
           })}
         </ul>
       </div>
