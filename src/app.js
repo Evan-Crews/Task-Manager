@@ -42,12 +42,12 @@ export const App = () => {
       
       <div className='inputDiv'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input className="text-input" type='text' id='task' placeholder='please input a task' 
+          <input className="text-input" type='text' id='task' placeholder='Please input a task' 
           {...register("task", {
             required: true
           })}
         />
-        <input className="submit-button" type='submit' value='submit'></input>
+        <input className="submit-button" type='submit' value='Submit'></input>
 
         </form>
         {/* <button onClick={() => console.log(value)}>Add to Tasks</button> */}
