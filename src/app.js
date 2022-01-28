@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { TaskList } from './TaskList.js';
 import styles from './style.css'
+import { json } from 'body-parser';
 
 
 export const App = () => {
@@ -11,7 +12,30 @@ export const App = () => {
   // create a form that allows user to input data implement react hook forms if possible
   // on submit of form, a function will be invoked, that will consume the service
   const { handleSubmit, register, formState: { errors } } = useForm();
-  const onSubmit = values => console.log(values);
+  const [list, setList] = useState()
+  useEffect(() => {
+    const url = "http://localhost:3000/task";
+      fetch(url)
+        .then((data) => {
+          return data.json()
+          })
+        .then((data) => setList(data))
+  },[list])
+  const onSubmit = values => {
+    const url = "http://localhost:3000/task/create"
+      fetch(url, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(values)
+      })
+        // .then((data) => {
+        //   return data.json()
+        // })
+        .then((data) => console.log(data))
+    const listCopy = [...list];
+    listCopy.push(values);
+    return setList(listCopy);
+  }
 
   return(
     <div className='outerDiv'>
@@ -19,24 +43,17 @@ export const App = () => {
       <div className='inputDiv'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input type='text' id='task' placeholder='please input a task' 
-          {...register("test", {
-            required: "Required",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: "Please enter a task"
-            }
+          {...register("task", {
+            required: true
           })}
         />
-        {errors.email && errors.email.message}
-
-
         <input type='submit' value='submit'></input>
 
         </form>
         {/* <button onClick={() => console.log(value)}>Add to Tasks</button> */}
         {/* need to build an onclick listener to invoke a fetch request to the local host tasks creat task end point */}
       </div>
-      <TaskList/>
+      <TaskList list={list}/>
     </div>
   )
 }
