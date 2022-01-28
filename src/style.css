@@ -10,7 +10,6 @@ body {
 
 .task-list {
   list-style: none;
-  max-height: 1000px;
 }
 
 .task-item {
